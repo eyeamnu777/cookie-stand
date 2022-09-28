@@ -9,7 +9,7 @@ const salmonLi = document.getElementById('listSection')
 // tabElem.setAttribute('id', 'tabElm');
 // salmonPage.appendChild(tabElem);
 
-const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm','7pm' ];
+const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 // 'Total Cookies'
 
@@ -29,7 +29,7 @@ function randCustom(min, max) {
 function cookiesPerHr(avgCookie, numOfCusto) {
   return Math.round(avgCookie * numOfCusto)
 }
-  
+
 
 //2. Use a method of that object to generate a random number of customers per hour. --> 
 
@@ -49,74 +49,250 @@ let city1 = {
   avgCookiesPerCust: 6.3,
   numberOfCustomers: [],
   numOfCookies: [],
-  getNum: function() {
+  getNum: function () {
     for (let i = 0; i < hours.length; i++) {
-       this.numberOfCustomers.push(randCustom(this.minCust, this.maxCust));
+      this.numberOfCustomers.push(randCustom(this.minCust, this.maxCust));
     }
   },
 
-  getNumOfCookies: function() {
-    for (let i = 0; i < numberOfCustomer.length; i++) {
-      this.numOfCookies.push(cookiesPerHr(this.avgCookiesPerCust,this.numberOfCustomers[i])); 
+  getNumOfCookies: function () {
+    for (let i = 0; i < this.numberOfCustomers.length; i++) {
+      this.numOfCookies.push(cookiesPerHr(this.avgCookiesPerCust, this.numberOfCustomers[i]));
     }
 
   },
+  // help from accpuntability partner: Nerissa
+  // render//
   render: function () {
     let ulElement = document.createElement('ul');
     salmonLi.appendChild(ulElement);
+    let totalCookies = 0;
+
+    let h2Element = document.createElement('h2');
+    h2Element.textContent = this.name
+    ulElement.appendChild(h2Element);
+
+
     for (let i = 0; i < hours.length; i++) {
       let liElement = document.createElement('li');
-      liElement.textContent = hours[i] + ":" + this.numOfCookies[i] 
+      liElement.textContent = hours[i] + ":" + this.numOfCookies[i];
+      totalCookies += this.numOfCookies[i]
       ulElement.appendChild(liElement);
+
     }
 
+    let listElement = document.createElement('li');
+    listElement.textContent = "total: " + totalCookies + " cookies";
+    ulElement.appendChild(listElement);
 
   }
 };
 
-  city1.getNum();
-  city1.getNumOfCookies();
-  city1.render();
+city1.getNum();
+city1.getNumOfCookies();
+city1.render();
 
-  // total: 0,
-  //storage for total logic
+// total: 0,
+//storage for total logic
+
 //Tokyo
+let city2 = {
+  name: 'Tokyo',
+  minCust: 3,
+  maxCust: 24,
+  avgCookiesPerCust: 1.2,
+  numberOfCustomers: [],
+  numOfCookies: [],
+  getNum: function () {
+    for (let i = 0; i < hours.length; i++) {
+      this.numberOfCustomers.push(randCustom(this.minCust, this.maxCust));
+    }
+  },
 
-// let city2 = {
-//   name: 'Tokyo'
-//   minCust: 3,
-//   maxCust: 24,
-//   avgCookiesPerCust: 1.2,
-//   hours:[]
-// }
+  getNumOfCookies: function () {
+    for (let i = 0; i < this.numberOfCustomers.length; i++) {
+      this.numOfCookies.push(cookiesPerHr(this.avgCookiesPerCust, this.numberOfCustomers[i]));
+    }
 
-// //Dubai
-// let city3 = {
-//   name: 'Dubai'
-//   minCust: 11,
-//   maxCust: 38,
-//   avgCookiesPerCust: 2.3,
-//   hours:[]
-// }
+  },
 
-// //Paris
-// let city4 = {
-//   name: 'Paris'
-//   min: 20,
-//   maxCust: 38,
-//   avgCookiesPerCust: 2.3,
-//   hours:[]
-// }
+  render: function () {
+    let ulElement = document.createElement('ul');
+    salmonLi.appendChild(ulElement);
+    let totalCookies = 0;
 
-// //Lima
-// let city5 = {
-//   name: 'Lima'
-//   minCust: 2,
-//   maxCust: 16,
-//   avgCookiesPerCustg: 4.6,
-//   hours:[]
-// }
+    let h2Element = document.createElement('h2');
+    h2Element.textContent = this.name
+    ulElement.appendChild(h2Element);
 
+
+    for (let i = 0; i < hours.length; i++) {
+      let liElement = document.createElement('li');
+      liElement.textContent = hours[i] + ":" + this.numOfCookies[i];
+      totalCookies += this.numOfCookies[i]
+      ulElement.appendChild(liElement);
+    }
+
+    let listElement = document.createElement('li');
+    listElement.textContent = "total: " + totalCookies + " cookies";
+    ulElement.appendChild(listElement);
+  }
+};
+
+city2.getNum();
+city2.getNumOfCookies();
+city2.render();
+
+//Dubai
+let city3 = {
+  name: 'Dubai',
+  minCust: 11,
+  maxCust: 38,
+  avgCookiesPerCust: 2.3,
+  numberOfCustomers: [],
+  numOfCookies: [],
+  getNum: function () {
+    for (let i = 0; i < hours.length; i++) {
+      this.numberOfCustomers.push(randCustom(this.minCust, this.maxCust));
+    }
+  },
+
+  getNumOfCookies: function () {
+    for (let i = 0; i < this.numberOfCustomers.length; i++) {
+      this.numOfCookies.push(cookiesPerHr(this.avgCookiesPerCust, this.numberOfCustomers[i]));
+    }
+
+  },
+
+  render: function () {
+    let ulElement = document.createElement('ul');
+    salmonLi.appendChild(ulElement);
+    let totalCookies = 0;
+
+    let h2Element = document.createElement('h2');
+    h2Element.textContent = this.name
+    ulElement.appendChild(h2Element);
+
+
+    for (let i = 0; i < hours.length; i++) {
+      let liElement = document.createElement('li');
+      liElement.textContent = hours[i] + ":" + this.numOfCookies[i];
+      totalCookies += this.numOfCookies[i]
+      ulElement.appendChild(liElement);
+
+    }
+
+    let listElement = document.createElement('li');
+    listElement.textContent = "total: " + totalCookies + " cookies";
+    ulElement.appendChild(listElement);
+
+  }
+};
+city3.getNum();
+city3.getNumOfCookies();
+city3.render();
+
+//Paris
+let city4 = {
+  name: 'Paris',
+  minCust: 20,
+  maxCust: 38,
+  avgCookiesPerCust: 2.3,
+  numberOfCustomers: [],
+  numOfCookies: [],
+  getNum: function () {
+    for (let i = 0; i < hours.length; i++) {
+      this.numberOfCustomers.push(randCustom(this.minCust, this.maxCust));
+    }
+  },
+
+  getNumOfCookies: function () {
+    for (let i = 0; i < this.numberOfCustomers.length; i++) {
+      this.numOfCookies.push(cookiesPerHr(this.avgCookiesPerCust, this.numberOfCustomers[i]));
+    }
+
+  },
+  // help from accpuntability partner: Nerissa
+  // render//
+  render: function () {
+    let ulElement = document.createElement('ul');
+    salmonLi.appendChild(ulElement);
+    let totalCookies = 0;
+
+    let h2Element = document.createElement('h2');
+    h2Element.textContent = this.name
+    ulElement.appendChild(h2Element);
+
+
+    for (let i = 0; i < hours.length; i++) {
+      let liElement = document.createElement('li');
+      liElement.textContent = hours[i] + ":" + this.numOfCookies[i];
+      totalCookies += this.numOfCookies[i]
+      ulElement.appendChild(liElement);
+
+    }
+
+    let listElement = document.createElement('li');
+    listElement.textContent = "total: " + totalCookies + " cookies";
+    ulElement.appendChild(listElement);
+
+  }
+};
+
+city4.getNum();
+city4.getNumOfCookies();
+city4.render();
+
+//Lima
+let city5 = {
+  name: 'Lima',
+  minCust: 2,
+  maxCust: 16,
+  avgCookiesPerCust: 4.6,
+  numberOfCustomers: [],
+  numOfCookies: [],
+  getNum: function () {
+    for (let i = 0; i < hours.length; i++) {
+      this.numberOfCustomers.push(randCustom(this.minCust, this.maxCust));
+    }
+  },
+
+  getNumOfCookies: function () {
+    for (let i = 0; i < this.numberOfCustomers.length; i++) {
+      this.numOfCookies.push(cookiesPerHr(this.avgCookiesPerCust, this.numberOfCustomers[i]));
+    }
+
+  },
+  // help from accpuntability partner: Nerissa
+  // render//
+  render: function () {
+    let ulElement = document.createElement('ul');
+    salmonLi.appendChild(ulElement);
+    let totalCookies = 0;
+
+    let h2Element = document.createElement('h2');
+    h2Element.textContent = this.name
+    ulElement.appendChild(h2Element);
+
+
+    for (let i = 0; i < hours.length; i++) {
+      let liElement = document.createElement('li');
+      liElement.textContent = hours[i] + ":" + this.numOfCookies[i];
+      totalCookies += this.numOfCookies[i]
+      ulElement.appendChild(liElement);
+
+    }
+
+    let listElement = document.createElement('li');
+    listElement.textContent = "total: " + totalCookies + " cookies";
+    ulElement.appendChild(listElement);
+
+  }
+};
+
+city5.getNum();
+city5.getNumOfCookies();
+city5.render();
 // //3. Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated.
 
 
